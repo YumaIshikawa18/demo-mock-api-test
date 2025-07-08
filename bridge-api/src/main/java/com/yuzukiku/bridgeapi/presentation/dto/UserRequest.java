@@ -1,4 +1,4 @@
-package com.yuzukiku.bridgeapi.presentation;
+package com.yuzukiku.bridgeapi.presentation.dto;
 
 import lombok.Data;
 
