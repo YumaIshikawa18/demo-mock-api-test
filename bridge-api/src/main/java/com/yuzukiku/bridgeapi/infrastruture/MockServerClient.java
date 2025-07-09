@@ -3,6 +3,7 @@ package com.yuzukiku.bridgeapi.infrastruture;
 import com.yuzukiku.bridgeapi.config.MockServerProperties;
 import com.yuzukiku.bridgeapi.presentation.dto.UserRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
@@ -17,9 +18,9 @@ public class MockServerClient {
                 .build()
                 .post()
                 .uri(properties.getUrl() + "/humans")
+                .contentType(MediaType.APPLICATION_JSON)
                 .body(request)
                 .retrieve()
-                .toEntity(MockUserResponse.class)
-                .getBody();
+                .body(MockUserResponse.class);
     }
 }
