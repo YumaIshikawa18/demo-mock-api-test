@@ -5,10 +5,7 @@ on:
       - main
     paths:
       - 'bridge-api/**'
-      - 'pom.xml'
-      - '.mvn/**'
-      - 'mvnw'
-      - 'mvnw.cmd'
+      - '.github/workflows/bridge-api.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
