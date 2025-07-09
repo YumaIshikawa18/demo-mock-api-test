@@ -22,4 +22,4 @@ jobs:
           java-version: '21'
       - name: Build & Test bridge-api
         run: |
-          ./mvnw --batch-mode -pl bridge-api clean verify
+          ./mvnw --batch-mode -f pom.xml -pl bridge-api -am clean verify
