@@ -1,0 +1,25 @@
+name: bridge-api.yml
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'bridge-api/**'
+      - 'pom.xml'
+      - '.mvn/**'
+      - 'mvnw'
+      - 'mvnw.cmd'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Build & Test bridge-api
+        run: |
+          ./mvnw --batch-mode -pl bridge-api clean verify
