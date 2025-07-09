@@ -20,11 +20,4 @@ jobs:
           cache: maven
       - name: Build & Test bridge-api
         run: |
-          ./mvnw -B package --file pom.xml -pl bridge-api/
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: bridge-api-artifacts
-          path: |
-            bridge-api/target/*.jar
-            bridge-api/Dockerfile
+          ./mvnw --batch-mode clean verify
