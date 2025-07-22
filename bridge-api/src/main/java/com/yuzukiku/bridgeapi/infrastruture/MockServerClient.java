@@ -17,7 +17,7 @@ public class MockServerClient {
         return restClientBuilder
                 .build()
                 .post()
-                .uri(properties.getUrl() + "/humans")
+                .uri(properties.getUrl() + "/humans/name")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(request)
                 .retrieve()

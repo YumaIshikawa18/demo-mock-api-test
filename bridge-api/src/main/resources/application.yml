@@ -1,6 +1,3 @@
-mock-server:
-  url: ${MOCK_SERVER_URL:http://mock-server:8081}
-
 spring:
   main:
     allow-bean-definition-overriding: true

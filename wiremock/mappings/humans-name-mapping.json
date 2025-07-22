@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/humans/name",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$[?(@.name == 'Ken Watanabe')]"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": "[{\"id\":\"123e4567-e89b-12d3-a456-426614174000\",\"name\":\"Ken Watanabe\",\"age\":40,\"hobbies\":[\"gardening\"]}]"
+  }
+}

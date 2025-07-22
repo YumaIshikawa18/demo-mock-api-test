@@ -28,7 +28,6 @@
 
     <modules>
         <module>bridge-api</module>
-        <module>mock-server</module>
     </modules>
 
     <build>

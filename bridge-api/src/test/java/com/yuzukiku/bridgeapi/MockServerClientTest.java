@@ -55,7 +55,7 @@ public class MockServerClientTest {
           ]
         }
         """;
-        server.expect(requestTo("http://localhost:8081/humans"))
+        server.expect(requestTo("http://localhost:8081/humans/name"))
                 .andExpect(method(HttpMethod.POST))
                 .andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
 
