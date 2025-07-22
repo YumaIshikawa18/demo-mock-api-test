@@ -4,7 +4,7 @@
     "url": "/humans/name",
     "bodyPatterns": [
       {
-        "matchesJsonPath": "$[?(@.name == 'Ken Watanabe')]"
+        "matchesJsonPath": "$[?(@.name == '田中')]"
       }
     ]
   },
@@ -13,6 +13,6 @@
     "headers": {
       "Content-Type": "application/json"
     },
-    "body": "[{\"id\":\"123e4567-e89b-12d3-a456-426614174000\",\"name\":\"Ken Watanabe\",\"age\":40,\"hobbies\":[\"gardening\"]}]"
+    "body": "[{\"id\":\"123e4567-e89b-12d3-a456-426614174000\",\"name\":\"田中\",\"age\":25,\"hobbies\":[\"読書\"]}]"
   }
 }
