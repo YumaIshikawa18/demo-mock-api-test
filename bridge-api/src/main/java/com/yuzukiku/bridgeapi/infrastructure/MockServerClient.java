@@ -1,4 +1,4 @@
-package com.yuzukiku.bridgeapi.infrastruture;
+package com.yuzukiku.bridgeapi.infrastructure;
 
 import com.yuzukiku.bridgeapi.presentation.dto.UserRequest;
 import lombok.RequiredArgsConstructor;
