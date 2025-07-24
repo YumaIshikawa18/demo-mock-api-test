@@ -1,8 +1,8 @@
 package com.yuzukiku.bridgeapi;
 
 import com.yuzukiku.bridgeapi.config.RestClientConfig;
-import com.yuzukiku.bridgeapi.infrastruture.MockServerClient;
-import com.yuzukiku.bridgeapi.infrastruture.MockUserResponse;
+import com.yuzukiku.bridgeapi.infrastructure.MockServerClient;
+import com.yuzukiku.bridgeapi.infrastructure.MockUserResponse;
 import com.yuzukiku.bridgeapi.presentation.dto.UserRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
