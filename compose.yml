@@ -20,5 +20,4 @@ services:
       - "8080:8080"
     volumes:
       - ./wiremock/mappings:/home/wiremock/mappings
-      - ./wiremock/__files:/home/wiremock/__files
 
