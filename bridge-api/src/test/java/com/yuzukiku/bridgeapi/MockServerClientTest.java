@@ -16,6 +16,8 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestClient;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
@@ -23,7 +25,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 @RestClientTest(MockServerClient.class)
 @Import(RestClientConfig.class)
-@TestPropertySource(properties = "mock-server.url=http://localhost:8081")
+@TestPropertySource(properties = "mock-server.url=http://localhost:8080")
 public class MockServerClientTest {
 
     @Autowired
@@ -46,23 +48,25 @@ public class MockServerClientTest {
         request.setName("田中");
 
         String json = """
-        {
-          "id": "123e4567-e89b-12d3-a456-426614174000",
-          "name": "田中",
-          "age": 25,
-          "hobbies": [
-            "読書"
-          ]
-        }
-        """;
-        server.expect(requestTo("http://localhost:8081/humans/name"))
+                [
+                  {
+                    "id":"123e4568-e89b-12d3-a456-426614174000",
+                    "name":"田中",
+                    "age":25,
+                    "hobbies":["Games", "Reading"]
+                  }
+                ]
+                """;
+        server.expect(requestTo("http://localhost:8080/humans/name"))
                 .andExpect(method(HttpMethod.POST))
                 .andRespond(withSuccess(json, MediaType.APPLICATION_JSON));
 
-        MockUserResponse response = client.fetchUserData(request);
-        assertThat(response.getName()).isEqualTo("田中");
-        assertThat(response.getAge()).isEqualTo(25);
-        assertThat(response.getHobbies()).containsExactly("読書");
+        List<MockUserResponse> responses = client.fetchUserData(request);
+
+        assertThat(responses).hasSize(1);
+        assertThat(responses.getFirst().getName()).isEqualTo("田中");
+        assertThat(responses.getFirst().getAge()).isEqualTo(25);
+        assertThat(responses.getFirst().getHobbies()).containsExactly("Games", "Reading");
 
         server.verify();
     }

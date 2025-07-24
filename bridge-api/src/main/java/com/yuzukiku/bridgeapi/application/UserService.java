@@ -1,22 +1,31 @@
 package com.yuzukiku.bridgeapi.application;
 
 import com.yuzukiku.bridgeapi.infrastruture.MockServerClient;
+import com.yuzukiku.bridgeapi.infrastruture.MockUserResponse;
 import com.yuzukiku.bridgeapi.presentation.dto.UserRequest;
 import com.yuzukiku.bridgeapi.presentation.dto.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final MockServerClient client;
 
-    public UserResponse getUserData(UserRequest request) {
-        var response = client.fetchUserData(request);
-        var result = new UserResponse();
-        result.setName(response.getName());
-        result.setAge(response.getAge());
-        result.setHobbies(response.getHobbies());
-        return result;
+
+    public List<UserResponse> getUserData(UserRequest request) {
+        List<MockUserResponse> mockList = client.fetchUserData(request);
+
+        return mockList.stream()
+                .map(mock -> {
+                    UserResponse resp = new UserResponse();
+                    resp.setName(mock.getName());
+                    resp.setAge(mock.getAge());
+                    resp.setHobbies(mock.getHobbies());
+                    return resp;
+                })
+                .toList();
     }
 }
