@@ -26,4 +26,3 @@ docker compose up --build
 ```
 
 `compose.yml` の定義に従い、`bridge-api` と WireMock が起動します。
-
