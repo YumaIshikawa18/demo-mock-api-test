@@ -26,3 +26,11 @@ docker compose up --build
 ```
 
 `compose.yml` の定義に従い、`bridge-api` と WireMock が起動します。
+
+JAR をビルドしてコンテナを作り直す場合は次のコマンドを実行します。
+
+```bash
+./mvnw clean package && docker compose down --volumes && docker compose up -d --build
+```
+
+WireMock で外部 API をモックし、`bridge-api` からは Spring の `RestClient` を用いてアクセスします。
